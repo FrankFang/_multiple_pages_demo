@@ -1,0 +1,17 @@
+{
+    "name": "project-name",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": ">=2.0.0",
+        "requirejs": "*",
+        "requirejs-text": "*",
+        "backbone-amd": "*",
+        "backbone.localStorage": "*",
+        "backbone.marionette": "*",
+        "underscore-amd": "*",
+        "bootstrap":"*",
+        "bootstrap-datepicker":"*",
+        "bootstrap-select":"*",
+        "bootstrap-notify":"*"
+    }
+}

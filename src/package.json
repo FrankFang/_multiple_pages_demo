@@ -1,0 +1,8 @@
+{
+    "name": "bbt",
+    "version": "0.0.1",
+    "dependencies": {
+        "load-grunt-tasks": "*",
+        "grunt-contrib-requirejs": "*"
+    }
+}
