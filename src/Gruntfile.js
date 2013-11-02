@@ -12,32 +12,53 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         copy: {
-            target: {
+            dist: {
                 files: [
                     {
-                        src: '../src/app.html',
-                        dest: '../dist/app.html'
-                    },
-                    {
-                        src: '../src/bower_components/requirejs/require.js',
-                        dest: '../dist/bower_components/requirejs/require.js'
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= yeoman.src %>',
+                        dest: '<%= yeoman.dist %>',
+                        src: [
+                            '*.{ico,txt,html}'
+                        ]
                     }
                 ]
             }
-
+        },
+        watch: {
+            options: {
+                nospawn: true,
+//                livereload: true
+            },
+            pages: {
+                files: ['<%= yeoman.src %>/{,*/}*.html'],
+                tasks: ['copy']
+            },
+            js: {
+                files: ['<%= yeoman.src %>/static/js/{,*/}*.js'],
+                tasks: ['requirejs']
+            }
         },
         requirejs: {
             compile: {
                 options: {
+                    generateSourceMaps: true,
                     modules: [
                         {
                             name: 'main',
                             exclude: ['jquery', 'underscore']
                         },
+                        {name: 'about',
+                            exclude: ['jquery']
+                        },
+
                         {
                             name: 'backbone',
                             exclude: ['jquery', 'underscore']
-                        }
+                        },
+                        {name: 'jquery'},
+//                        {name: 'underscore'}
                     ],
                     baseUrl: "<%= yeoman.src%>/static/js",
                     mainConfigFile: "<%= yeoman.src%>/static/js/require_config.js",
@@ -51,6 +72,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'copy',
-        'requirejs'
+        'requirejs',
+        'watch'
     ]);
 };

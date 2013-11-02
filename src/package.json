@@ -4,6 +4,7 @@
     "dependencies": {
         "load-grunt-tasks": "*",
         "grunt-contrib-requirejs": "*",
-        "grunt-contrib-copy":"*"
+        "grunt-contrib-copy":"*",
+        "grunt-contrib-watch":"*"
     }
 }
