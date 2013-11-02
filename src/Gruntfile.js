@@ -11,6 +11,11 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        copy: {
+            dist: [
+                {src: '<%= yeoman.src%>/*', dest: '<%= yeoman.dist%>/', filter: 'isFiles' }
+            ]
+        },
         requirejs: {
             compile: {
                 options: {
@@ -32,9 +37,7 @@ module.exports = function (grunt) {
                 }
             }
         }
-
     });
-
 
     grunt.registerTask('default', [
         'requirejs',
