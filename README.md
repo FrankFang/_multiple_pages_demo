@@ -1,2 +1,8 @@
-_multiple_pages_demo
+multiple_pages_demo
 ====================
+
+`npm install`
+
+`bower install`
+
+`grunt`
