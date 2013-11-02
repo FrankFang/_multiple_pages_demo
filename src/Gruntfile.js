@@ -12,9 +12,19 @@ module.exports = function (grunt) {
     grunt.initConfig({
         yeoman: yeomanConfig,
         copy: {
-            dist: [
-                {src: '<%= yeoman.src%>/*', dest: '<%= yeoman.dist%>/', filter: 'isFiles' }
-            ]
+            target: {
+                files: [
+                    {
+                        src: '../src/app.html',
+                        dest: '../dist/app.html'
+                    },
+                    {
+                        src: '../src/bower_components/requirejs/require.js',
+                        dest: '../dist/bower_components/requirejs/require.js'
+                    }
+                ]
+            }
+
         },
         requirejs: {
             compile: {
@@ -41,6 +51,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', [
         'copy',
-        'requirejs',
+        'requirejs'
     ]);
 };

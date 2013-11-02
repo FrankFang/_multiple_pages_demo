@@ -1,3 +1,4 @@
-requirejs(["app"], function (App) {
-    console.log(App)
+require(["app"], function (App) {
+    var app = new App();
+    app.hello()
 });
