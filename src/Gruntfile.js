@@ -43,28 +43,30 @@ module.exports = function (grunt) {
         requirejs: {
             compile: {
                 options: {
-                    generateSourceMaps: true,
+
                     modules: [
                         {
-                            name: 'main',
-                            exclude: ['jquery', 'underscore']
+                            name: 'libs',
+                            include: [
+                                'jquery',
+                                'underscore'
+                            ]
                         },
-                        {name: 'about',
-                            exclude: ['jquery']
-                        },
-
                         {
-                            name: 'backbone',
-                            exclude: ['jquery', 'underscore']
+                            name: 'page1',
+                            include: ['models/app.js'],
+                            exclude: ['libs']
                         },
-                        {name: 'jquery'},
-//                        {name: 'underscore'}
+                        {
+                            name: 'page2',
+                            include: ['models/about.js'],
+                            exclude: ['libs']
+                        }
                     ],
                     baseUrl: "<%= yeoman.src%>/static/js",
                     mainConfigFile: "<%= yeoman.src%>/static/js/require_config.js",
                     dir: "<%= yeoman.dist%>/static/js/",
-                    optimize: 'none',
-                    wrap: true
+//                    optimize: 'none'
                 }
             }
         }
