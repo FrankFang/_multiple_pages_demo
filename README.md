@@ -6,3 +6,5 @@ multiple_pages_demo
 `bower install`
 
 `grunt`
+
+`open dist/page1.html`
