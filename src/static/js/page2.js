@@ -3,6 +3,3 @@ require(['libs'], function (libs) {
     require(["models/about"], function (About) {
     });
 });
-
-
-

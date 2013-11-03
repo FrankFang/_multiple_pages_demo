@@ -66,7 +66,7 @@ module.exports = function (grunt) {
                     baseUrl: "<%= yeoman.src%>/static/js",
                     mainConfigFile: "<%= yeoman.src%>/static/js/require_config.js",
                     dir: "<%= yeoman.dist%>/static/js/",
-//                    optimize: 'none'
+                    optimize: 'none'
                 }
             }
         }
