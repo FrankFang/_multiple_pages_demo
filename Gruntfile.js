@@ -28,13 +28,14 @@ module.exports = function (grunt) {
                 nospawn: true,
                 livereload: true
             },
-            pages: {
-                files: ['<%= yeoman.src %>/{,*/}*.html'],
-                tasks: ['copy']
-            },
-            js: {
-                files: ['<%= yeoman.src %>/static/js/{,*/}*.js'],
-                tasks: ['requirejs']
+            all: {
+                files: ['<%= yeoman.src %>/{,*/}*.html','<%= yeoman.src %>/static/js/{,*/}*.js'],
+                tasks: [
+                    'clean',
+                    'requirejs',
+                    'copy',
+                    'targethtml:dev'
+                ]
             }
         },
         requirejs: {
@@ -46,35 +47,42 @@ module.exports = function (grunt) {
                             name: 'libs',
                             include: [
                                 'jquery',
-                                'underscore'
+                                'underscore',
+                                'backbone'
                             ]
                         },
-                        {
-                            name: 'page1',
-                            include: ['models/app.js'],
-                            exclude: ['libs']
-                        },
+//                        {
+//                            name: 'main',
+//                            include: ['models/app.js'],
+//                            exclude: ['libs']
+//                        },
                         {
                             name: 'page2',
                             include: ['models/about.js'],
                             exclude: ['libs']
                         }
                     ],
-                    baseUrl: "<%= yeoman.src%>/static/js",
-                    dir: "<%= yeoman.dist%>/static/js/",
+                    baseUrl: '<%= yeoman.src%>/static/js',
+                    dir: '<%= yeoman.dist%>/static/js/',
                     optimize: 'none',
-                    "paths": {
-                        "jquery": "../../../bower_components/jquery/jquery.min",
-                        "backbone": "../../../bower_components/backbone/backbone-min",
-                        "underscore": "../../../bower_components/underscore/underscore"
+                    'paths': {
+                        'jquery': '../../../bower_components/jquery/jquery.min',
+                        'backbone': '../../../bower_components/backbone/backbone-min',
+                        'underscore': '../../../bower_components/underscore/underscore',
+                        'marionette': '../../../bower_components/backbone.marionette/lib/backbone.marionette',
+                        'handlebars':'../../../bower_components/handlebars/handlebars.amd'
                     },
-                    "shim": {
+                    'shim': {
                         backbone: {
-                            exports: 'Backbone',
-                            deps: ['underscore', 'jquery']
+                            deps: ['underscore', 'jquery'],
+                            exports: 'Backbone'
                         },
                         underscore: {
                             exports: '_'
+                        },
+                        'backbone.marionette': {
+                            deps: ['jquery', 'underscore', 'backbone'],
+                            exports: 'Marionette'
                         }
                     }
                 }
@@ -111,7 +119,7 @@ module.exports = function (grunt) {
         'clean',
         'requirejs',
         'copy',
-        'targethtml:dev',
+        'targethtml:dist',
         'watch'
     ]);
 };
