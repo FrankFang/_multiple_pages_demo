@@ -1,3 +1,3 @@
-define('libs', ['jquery', 'underscore'], function () {
+define('libs', ['jquery', 'underscore','backbone'], function () {
 
 });
