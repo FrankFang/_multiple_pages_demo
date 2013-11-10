@@ -68,20 +68,17 @@ module.exports = function (grunt) {
                     optimize: 'none',
                     "paths": {
                         "jquery": "../../bower_components/jquery/jquery.min",
-                        "backbone": "../../bower_components/backbone-amd/backbone-min",
-                        "underscore": "../../bower_components/underscore-amd/underscore"
+                        "backbone": "../../bower_components/backbone/backbone-min",
+                        "underscore": "../../bower_components/underscore/underscore"
                     },
                     "shim": {
-//        jquery: {
-//            exports: 'jQuery'
-//        },
-//        backbone: {
-//            exports: 'Backbone',
-//            deps: ['underscore', 'jquery']
-//        },
-//        underscore: {
-//            exports: '_'
-//        }
+                        backbone: {
+                            exports: 'Backbone',
+                            deps: ['underscore', 'jquery']
+                        },
+                        underscore: {
+                            exports: '_'
+                        }
                     }
                 }
             }
