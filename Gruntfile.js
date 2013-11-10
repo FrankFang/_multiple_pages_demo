@@ -5,15 +5,21 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     var yeomanConfig = {
-        src: '../src',
-        dist: '../dist'
+        src: 'src',
+        dist: 'dist',
+        bower:'bower_components'
     }
 
     grunt.initConfig({
         yeoman: yeomanConfig,
+        clean:['<%= yeoman.dist %>'],
         copy: {
             dist: {
                 files: [
+                    {
+                        dest: '<%= yeoman.dist%>/static/js/require.js',
+                        src:'<%= yeoman.bower%>/requirejs/require.js'
+                    },
                     {
                         expand: true,
                         dot: true,
@@ -22,7 +28,7 @@ module.exports = function (grunt) {
                         src: [
                             '*.{ico,txt,html}'
                         ]
-                    }
+                    },
                 ]
             }
         },
@@ -67,9 +73,9 @@ module.exports = function (grunt) {
                     dir: "<%= yeoman.dist%>/static/js/",
                     optimize: 'none',
                     "paths": {
-                        "jquery": "../../bower_components/jquery/jquery.min",
-                        "backbone": "../../bower_components/backbone/backbone-min",
-                        "underscore": "../../bower_components/underscore/underscore"
+                        "jquery": "../../../bower_components/jquery/jquery.min",
+                        "backbone": "../../../bower_components/backbone/backbone-min",
+                        "underscore": "../../../bower_components/underscore/underscore"
                     },
                     "shim": {
                         backbone: {
@@ -86,12 +92,14 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', [
-        'copy',
+        'clean',
         'requirejs',
+        'copy',
     ]);
     grunt.registerTask('dev', [
-        'copy',
+        'clean',
         'requirejs',
+        'copy',
         'watch'
     ]);
 };

@@ -4,8 +4,8 @@
     "dependencies": {
         "requirejs": "*",
         "jquery": ">=1.9.0",
-        "backbone-amd": "*",
-        "underscore-amd": "*",
+        "backbone": "*",
+        "underscore": "*",
         "bootstrap":"*"
     }
 }
