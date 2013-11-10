@@ -64,15 +64,35 @@ module.exports = function (grunt) {
                         }
                     ],
                     baseUrl: "<%= yeoman.src%>/static/js",
-                    mainConfigFile: "<%= yeoman.src%>/static/js/require_config.js",
                     dir: "<%= yeoman.dist%>/static/js/",
-                    optimize: 'none'
+                    optimize: 'none',
+                    "paths": {
+                        "jquery": "../../bower_components/jquery/jquery.min",
+                        "backbone": "../../bower_components/backbone-amd/backbone-min",
+                        "underscore": "../../bower_components/underscore-amd/underscore"
+                    },
+                    "shim": {
+//        jquery: {
+//            exports: 'jQuery'
+//        },
+//        backbone: {
+//            exports: 'Backbone',
+//            deps: ['underscore', 'jquery']
+//        },
+//        underscore: {
+//            exports: '_'
+//        }
+                    }
                 }
             }
         }
     });
 
     grunt.registerTask('default', [
+        'copy',
+        'requirejs',
+    ]);
+    grunt.registerTask('dev', [
         'copy',
         'requirejs',
         'watch'
