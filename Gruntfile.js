@@ -83,13 +83,18 @@ module.exports = function (grunt) {
         targethtml: {
             dist: {
                 files: {
-                    '<%= yeoman.dist%>/page1.html': '<%= yeoman.src%>/page1.html',
+                    '<%= yeoman.dist%>/app.html': '<%= yeoman.src%>/app.html',
                     '<%= yeoman.dist%>/page2.html': '<%= yeoman.src%>/page2.html'
                 }
             },
-            dev:{
+            dev: {
+                options: {
+                    curlyTags: {
+                        timestamp: '<%= grunt.template.today("yyyymmddHHMMss") %>'
+                    }
+                },
                 files: {
-                    '<%= yeoman.dist%>/page1.html': '<%= yeoman.src%>/page1.html',
+                    '<%= yeoman.dist%>/app.html': '<%= yeoman.src%>/app.html',
                     '<%= yeoman.dist%>/page2.html': '<%= yeoman.src%>/page2.html'
                 }
             }
