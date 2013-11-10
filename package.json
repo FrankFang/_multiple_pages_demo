@@ -6,6 +6,7 @@
     "grunt-contrib-requirejs": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-watch": "*",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-targethtml": "~0.2.6"
   }
 }

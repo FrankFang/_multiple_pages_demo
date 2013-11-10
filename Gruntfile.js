@@ -7,35 +7,26 @@ module.exports = function (grunt) {
     var yeomanConfig = {
         src: 'src',
         dist: 'dist',
-        bower:'bower_components'
+        bower: 'bower_components'
     }
 
     grunt.initConfig({
         yeoman: yeomanConfig,
-        clean:['<%= yeoman.dist %>'],
+        clean: ['<%= yeoman.dist %>'],
         copy: {
             dist: {
                 files: [
                     {
                         dest: '<%= yeoman.dist%>/static/js/require.js',
-                        src:'<%= yeoman.bower%>/requirejs/require.js'
-                    },
-                    {
-                        expand: true,
-                        dot: true,
-                        cwd: '<%= yeoman.src %>',
-                        dest: '<%= yeoman.dist %>',
-                        src: [
-                            '*.{ico,txt,html}'
-                        ]
-                    },
+                        src: '<%= yeoman.bower%>/requirejs/require.js'
+                    }
                 ]
             }
         },
         watch: {
             options: {
                 nospawn: true,
-//                livereload: true
+                livereload: true
             },
             pages: {
                 files: ['<%= yeoman.src %>/{,*/}*.html'],
@@ -88,6 +79,20 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+        targethtml: {
+            dist: {
+                files: {
+                    '<%= yeoman.dist%>/page1.html': '<%= yeoman.src%>/page1.html',
+                    '<%= yeoman.dist%>/page2.html': '<%= yeoman.src%>/page2.html'
+                }
+            },
+            dev:{
+                files: {
+                    '<%= yeoman.dist%>/page1.html': '<%= yeoman.src%>/page1.html',
+                    '<%= yeoman.dist%>/page2.html': '<%= yeoman.src%>/page2.html'
+                }
+            }
         }
     });
 
@@ -95,11 +100,13 @@ module.exports = function (grunt) {
         'clean',
         'requirejs',
         'copy',
+        'targethtml:dist'
     ]);
     grunt.registerTask('dev', [
         'clean',
         'requirejs',
         'copy',
+        'targethtml:dev',
         'watch'
     ]);
 };
